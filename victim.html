@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResQMap | Victim Emergency SOS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body class="victim-body">
+    <header>
+        <div class="logo">🚨 ResQMap SOS <span class="badge-dev">Lead Dev: Jyansh Jain</span></div>
+        <a href="index.html?developer=jyansh-jain" class="back-link">⬅ Exit to Portal Selection</a>
+    </header>
+
+    <div class="victim-container" style="max-width: 900px;">
+        <div class="sos-card">
+            <h2>🆘 Broadcast Emergency SOS</h2>
+            <p class="subtitle">AI will auto-categorize priority & dispatch location to Rescue Command Center.</p>
+            
+            <form id="sosForm">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="phone" placeholder="Enter active contact number" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Primary Need Type</label>
+                    <select id="needType" required>
+                        <option value="Medical Emergency">Medical Emergency / Severe Injury</option>
+                        <option value="Trapped / Evacuation Needed">Trapped / Flood Evacuation Needed</option>
+                        <option value="Food & Drinking Water">Food & Drinking Water Supply</option>
+                        <option value="Shelter Support">Temporary Shelter Support</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Emergency Message / Situation Details</label>
+                    <textarea id="message" rows="2" placeholder="Describe your exact situation..." required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="button" class="loc-btn" onclick="getLocation()">📍 Fetch Current GPS Location</button>
+                    <p id="locStatus" class="loc-status">GPS Status: Location Not Fetched Yet</p>
+                </div>
+
+                <!-- VICTIM SIDE LIVE SATELLITE MAP -->
+                <div class="form-group">
+                    <label>🗺️ Nearby Elevated Safe Zones & Danger Areas</label>
+                    <div id="map" style="width: 100%; height: 260px; border-radius: 8px; border: 1px solid #334155;"></div>
+                </div>
+
+                <button type="submit" class="submit-btn">SEND SOS ALERT NOW</button>
+            </form>
+        </div>
+        
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
